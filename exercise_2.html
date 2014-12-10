@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 2 - Check All or None</title>
+    <script>
+
+        function check(cheked) {
+            var checkboxes = document.getElementsByClassName('colors');
+            for (i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = cheked;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <input type="checkbox" class="colors" >red<br />
+    <input type="checkbox" class="colors">green<br />
+    <input type="checkbox" class="colors">yellow<br />
+    <input type="checkbox" class="colors">white<br />
+    <input type="checkbox" class="colors">black<br />
+    <br />
+    <a href="#" onclick="check(true)">Check All</a>
+    <br /><br />
+    <a href="#" onclick="check(false)">None</a>
+</body>
+</html>
