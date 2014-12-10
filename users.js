@@ -15,6 +15,8 @@ User.prototype.compare = function (user) {
     if (this.age < user.age) {
         return user.name + " is older than " + this.name + ".";
     }
+
+    return this.name + " and " + user.name + " are age mates.";
 };
 
 var user1 = new User('0luwasegun', 26);
