@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 3 - Check All or None</title>
+    <script src="exercise_3.js"></script>
+    <script>
+        var checkLimit = new CheckLimit('days', 3);
+    </script>
+</head>
+
+<body>
+    <input type="checkbox" onclick="checkLimit.check('sun')" class="days" id="sun" value="Sunday">Sunday
+    <br />
+    <input type="checkbox" onclick="checkLimit.check('mon')" class="days" id="mon" value="Monday">Monday
+    <br />
+    <input type="checkbox" onclick="checkLimit.check('tue')" class="days" id="tue" value="Tuesday">Tuesday
+    <br />
+    <input type="checkbox" onclick="checkLimit.check('wed')" class="days" id="wed" value="Wednesday">Wednesday
+    <br />
+    <input type="checkbox" onclick="checkLimit.check('thu')" class="days" id="thu" value="Thursday">Thursday
+    <br />
+    <input type="checkbox" onclick="checkLimit.check('fri')" class="days" id="fri" value="Friday">Friday
+    <br />
+    <input type="checkbox" onclick="checkLimit.check('sat')" class="days" id="sat" value="Saturday">Saturday
+    <br />
+    <input type="checkbox" onclick="checkLimit.uncheck()" id="none">None
+</body>
+</html>
