@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 4 (Parent Checkbox and their children checkbox ­movies, drinks and bikes)</title>
+
+    <style>
+        .main {
+            height: 100px;
+            overflow: scroll;
+        }
+
+        .main div div {
+            margin-left: 15px;
+            display: none;
+        }
+    </style>
+    <script src="exercise_4.js">
+    </script>
+    <script>
+        var checkChild = new CheckChildren();
+    </script>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <div class="color">
+            <input onclick="checkChild.check('color')" type="checkbox" id="color">Colors
+            <div>
+                <input type="checkbox">red<br />
+                <input type="checkbox">yellow<br />
+                <input type="checkbox">green<br />
+                <input type="checkbox">blue
+            </div>
+        </div>
+
+        <div class="movie">
+            <input onclick="checkChild.check('movie')" type="checkbox" id="movie">Movies
+            <div>
+                <input type="checkbox">Dar<br />
+                <input type="checkbox">Sir
+            </div>
+        </div>
+
+        <div class="drink">
+            <input onclick="checkChild.check('drink')" type="checkbox" id="drink">Drinks
+            <div>
+                <input type="checkbox">Coke<br />
+                <input type="checkbox">Pepsi<br />
+                <input type="checkbox">Dew
+            </div>
+        </div>
+
+        <div class="bike">
+            <input onclick="checkChild.check('bike')" type="checkbox" id="bike">Bikes
+            <div>
+                <input type="checkbox">V-rod<br />
+                <input type="checkbox">Pulsar<br />
+                <input type="checkbox">CBZ
+            </div>
+        </div>
+    </div>
+</body>
+</html>
