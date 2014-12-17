@@ -2,7 +2,7 @@
 function CheckLimit(className, limit) {
     this.className = className;
     this.limit  = limit;
-    this.count = 0
+    this.count = 0;
 }
 
 CheckLimit.prototype.check = function(id) {
@@ -34,7 +34,7 @@ CheckLimit.prototype.check = function(id) {
                 } else if (i == len - 1) {
                     message += ' and ';
                     message += checkedValue[i];
-                    message += '.'
+                    message += '.';
                 } else {
                     message += ', ';
                     message += checkedValue[i];
