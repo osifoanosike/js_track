@@ -1,10 +1,10 @@
 
-function SubmitForm() {
+function TabularForm() {
   this.rowCount = 0;
 }
 
-SubmitForm.prototype.addRow = function() {
-  //rowCount = this.rowCount;
+TabularForm.prototype.addRow = function() {
+  
   this.rowCount++;
   var rowNumber = this.rowCount.toString();
   var tbody = document.getElementById('tbody');
@@ -26,8 +26,8 @@ var submit = function(rowNumber) {
   var name = inputs[0].firstChild.value;
   var email = inputs[1].firstChild.value;
       
-  if (notEmpty(name) && notEmpty(email)) {
-    if (!validate(inputs[1].firstChild.value)) {
+  if (!empty(name) && !empty(email)) {
+    if (!validate(email)) {
       return false;
     } else {
       inputs[0].innerHTML = name;
@@ -38,8 +38,7 @@ var submit = function(rowNumber) {
   } else {
     alert('Make sure there are no empty fields.');
   }
-};
-    
+};   
 
     function validate(email) {
       var atpos = email.indexOf("@");
@@ -51,11 +50,15 @@ var submit = function(rowNumber) {
       return true;
     }
 
-    function notEmpty(value) {
-      if (value == "") {
-        return false;
-      } else {
+    function empty(value) {
+      if (value !== null) {
+        value = value.trim();
+      }
+
+      if (!value) {
         return true;
+      } else {
+        return false;
       }
     }
 
@@ -76,4 +79,4 @@ var removeRow = function(rowNumber) {
   parent.removeChild(child);
 };
 
-var submitIt = new SubmitForm();
+var tabForm = new TabularForm();
