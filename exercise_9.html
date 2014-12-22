@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise 9 (Move countries from one box to the other)</title>
+
+  <style>
+    select {
+      display: block;
+      width: 130px;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      width: 130px;
+    }
+  </style>
+
+  <script src="exercise_9.js"></script>
+
+</head>
+
+<body>
+  <h4>Countries &mdash; First Box</h4>
+  <select id="add" size="6">
+    <option value="nigeria">Nigeria</option>
+    <option value="ghana">Ghana</option>
+    <option value="benin">Benin</option>
+    <option value="togo">Togo</option>
+    <option value="gambia">Gambia</option>
+    <option value="guinee">Guinee</option>
+  </select>
+  <button onclick="selectCountry.addCountry()">Add</button>
+
+  <h4>Selected Countries &mdash; Second Box</h4>
+  <select id="remove" size="6"></select>
+  <button onclick="selectCountry.removeCountry()">Remove</button>
+    
+  </select>
+</body>
+</html>
