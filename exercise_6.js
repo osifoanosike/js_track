@@ -1,9 +1,9 @@
 
-function Validate() {
+function Validation() {
 
 }
 
-Validate.prototype.checkValue = function(formName) {
+Validation.prototype.checkValue = function(formName) {
 
   var form = document.forms[formName];
 
@@ -32,12 +32,15 @@ Validate.prototype.checkValue = function(formName) {
 }
 
 function empty(value) {
-  var value = value.trim();
-  if (value == "") {
+  if (value !== null) {
+    value = value.trim();
+  }
+
+  if (!value) {
     return true;
   } else {
     return false;
   }
 }
 
-var validate = new Validate();
+var validator = new Validation();

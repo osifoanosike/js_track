@@ -2,13 +2,34 @@
 
 <html>
 <head>
-  <title>Ecercise 6 - Exercise (Form validation using js)</title>
+  <title>Exercise 6 - (Form validation using js)</title>
   <style>
-    label {
-      display: block;
-      width: 100px;
-      float: left;
+
+    form {
+      width: 500px;
+      margin: auto;
+      background: #cde;
     }
+
+    h4 {
+      background: #ddd;
+      padding: 5px;
+    }
+
+    form div {
+      padding: 7px;
+    }
+
+    label {
+      width: 150px;
+      font-weight: bold;
+    }
+
+    label:not(#comment) {
+      float: left;
+      display: block;
+    }
+    
   </style>
 
   <script src="exercise_6.js">
@@ -17,46 +38,45 @@
 
 <body>
 
-  <h1>Registration Form</h1>
 
-  <form name="form" onsubmit="validate.checkValue('form')" method="post" action="">
-    <label for="loginid">Login Id</label>
-    <input type="text" name="loginid">
-    <br>
-    <br>
-    <label for="email">Email</label>
-    <input type="text" name="email">
-    <br>
-    <br>
-    <label for="name">Name</label>
-    <input type="text" name="name">
-    <br>
-    <br>
-    <label for="timezone">Time Zone</label>
-    <select name="timezone">
-      <option value="">Select Time Zone</option>
-      <option value="gmt">GMT</option>
-      <option value="wat">WAT</option>
-      <option value="est">EST</option>
-      <option value="pat">PAT</option>
-    </select>
-    <br>
-    <br>
-    <label for="homepage">Home Page</label>
-    <input type="text" name="homepage">
-    <br>
-    <br>
-    <label for="about">About Me</label>
-    <textarea name="about" cols="20" rows="5"></textarea>
-    <br>
-    <br>
-    <input type="checkbox" name="comment"> <lable for="comment">Receive notification of comment.</lable>
-    <p>You will be sent an email when someone posts comments to your Blog or Album.</p>
-
-    <p>Your password will be mailed to you</p>
-
-    <input type="submit" value="GO">
-
+  <form name="form" onsubmit="validator.checkValue('form')" method="post" action="">
+    <h4 style="text-align:center">Registration Form</h4>
+    <div>
+      <label for="loginid">Login Id</label>
+      <input type="text" name="loginid">
+      <br>
+      <br>
+      <label for="email">Email</label>
+      <input type="text" name="email">
+      <br>
+      <br>
+      <label for="name">Name</label>
+      <input type="text" name="name">
+      <br>
+      <br>
+      <label for="timezone">Time Zone</label>
+      <select name="timezone">
+        <option value="">Select Time Zone</option>
+        <option value="gmt">GMT</option>
+        <option value="wat">WAT</option>
+        <option value="est">EST</option>
+        <option value="pat">PAT</option>
+      </select>
+      <br>
+      <br>
+      <label for="homepage">Home Page</label>
+      <input type="text" name="homepage">
+      <br>
+      <br>
+      <label for="about">About Me</label><br>
+      <textarea name="about" cols="58" rows="10"></textarea>
+      <br>
+      <br>
+      <input type="checkbox" name="comment"> <label id="comment" for="comment">Receive notification of comment.</label>
+      <p>You will be sent an email when someone posts comments to your Blog or Album.</p>
+      <p>Your password will be mailed to you</p>
+      <input type="submit" value="GO">
+    </div>
   </form>
 </body>
 </html>
