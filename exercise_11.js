@@ -20,8 +20,6 @@ CheckNumeric.prototype.checkInput = function() {
   }
 }
 
-
-
   function empty(value) {
     if (value !== null) {
       value = value.trim();
