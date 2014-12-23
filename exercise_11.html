@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise 11: Matching numerical values and event propogation</title>
+
+  <style>
+
+    form {
+      width: 500px;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    label {
+      width: 150px;
+      font-weight: bold;
+      float: left;
+      display: block;
+    }
+
+    input[type='submit'] {
+      width: 172px;
+      margin-left: 575px;
+    }
+    
+  </style>
+
+  <script src="exercise_11.js">
+  </script>
+</head>
+<body>
+  <form name="form" method="post" action="" onsubmit="checkInput()">
+    <label for="number">Enter Number</label>
+    <input type="text" name="number">
+    <br>
+    <br>
+    <label for="result">Result</label>
+    <input type="text" name="result">
+    <br>
+    <br>
+  </form>
+    <input type="submit" value="Submit" onclick="matchNumber.checkInput()">
+</body>
+</html>
