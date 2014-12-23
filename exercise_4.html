@@ -1,63 +1,54 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Exercise 4 (Parent Checkbox and their children checkbox ­movies, drinks and bikes)</title>
+  <title>Exercise 4 (Parent Checkbox and their children checkbox ­movies, drinks and bikes)</title>
 
-    <style>
-        .main {
-            height: 100px;
-            overflow: scroll;
-        }
+  <style>
+    .main {
+      height: 100px;
+      overflow: scroll;
+    }
 
-        .main div div {
-            margin-left: 15px;
-            display: none;
-        }
-    </style>
-    <script src="exercise_4.js">
-    </script>
-    <script>
-        var checkChild = new CheckChildren();
-    </script>
+    div div {
+      margin-left: 15px;
+      display: none;
+    }
+  </style>
+
+  <script src="exercise_4.js">
+  </script>
 </head>
 
 <body>
-    <div class="main" id="main">
-        <div class="color">
-            <input onclick="checkChild.check('color')" type="checkbox" id="color">Colors
-            <div>
-                <input type="checkbox">red<br />
-                <input type="checkbox">yellow<br />
-                <input type="checkbox">green<br />
-                <input type="checkbox">blue
-            </div>
-        </div>
-
-        <div class="movie">
-            <input onclick="checkChild.check('movie')" type="checkbox" id="movie">Movies
-            <div>
-                <input type="checkbox">Dar<br />
-                <input type="checkbox">Sir
-            </div>
-        </div>
-
-        <div class="drink">
-            <input onclick="checkChild.check('drink')" type="checkbox" id="drink">Drinks
-            <div>
-                <input type="checkbox">Coke<br />
-                <input type="checkbox">Pepsi<br />
-                <input type="checkbox">Dew
-            </div>
-        </div>
-
-        <div class="bike">
-            <input onclick="checkChild.check('bike')" type="checkbox" id="bike">Bikes
-            <div>
-                <input type="checkbox">V-rod<br />
-                <input type="checkbox">Pulsar<br />
-                <input type="checkbox">CBZ
-            </div>
-        </div>
+  <div class="main" id="main">
+    <input onclick="checkChild.check('color')" type="checkbox" class="color"><label>Colors</label><br />
+    <div class="color">
+      <input type="checkbox"><label>red</label><br />
+      <input type="checkbox"><label>yellow</label><br />
+      <input type="checkbox"><label>green</label><br />
+      <input type="checkbox"><label>blue</label>
     </div>
+
+    <input onclick="checkChild.check('movie')" type="checkbox" class="movie"><label>Movies</label><br />
+    <div class="movie">
+      <input type="checkbox"><label>Dar</label><br />
+      <input type="checkbox"><label>Sir</label>
+    </div>
+
+    <input onclick="checkChild.check('drink')" type="checkbox" class="drink"><label>Drinks</label><br />
+    <div class="drink">
+      <input type="checkbox"><label>Coke</label><br />
+      <input type="checkbox"><label>Pepsi</label><br />
+      <input type="checkbox"><label>Dew</label>
+    </div>
+
+    <input onclick="checkChild.check('bike')" type="checkbox" class="bike"><label>Bikes</label><br />
+    <div class="bike">
+      <input type="checkbox"><label>V-rod</label><br />
+      <input type="checkbox"><label>Pulsar</label><br />
+      <input type="checkbox"><label>CBZ</label>
+    </div>
+  </div>
 </body>
 </html>
