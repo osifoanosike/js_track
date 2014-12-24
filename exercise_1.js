@@ -1,23 +1,23 @@
 
 function User(name, age) {
-    this.name = name;
-    this.age = Number(age);
+  this.name = name;
+  this.age = Number(age);
 }
 
 // This method takes the object of the class User as a parameter.
 
 User.prototype.compare = function (user) {
-    if (this.age > user.age) {2
-        result = this.name + " is older than " + user.name + ".";
-    } else if (this.age < user.age) {
-        result = user.name + " is older than " + this.name + ".";
-    } else {
-        //This is the result if both users are of the same age.
-        result = this.name + " and " + user.name + " are age mates.";
-    }
+  if (this.age > user.age) {2
+    result = this.name + " is older than " + user.name + ".";
+  } else if (this.age < user.age) {
+    result = user.name + " is older than " + this.name + ".";
+  } else {
+    //This is the result if both users are of the same age.
+    result = this.name + " and " + user.name + " are age mates.";
+  }
 
-    return result;
-};
+  return result;
+}
 
 var user1 = new User('0luwasegun', '0026');
 var user2 = new User('4bhishek', '25');
