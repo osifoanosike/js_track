@@ -16,7 +16,7 @@ ChildrenCheck.prototype.check = function(className) {
 
   for (var i = 0; i < childCheckbox.length; i++) {
     if (childCheckbox[i].nodeName.toLowerCase() == "input") {
-       if (parentCheckbox.checked) {
+      if (parentCheckbox.checked) {
         childCheckbox[i].checked = true;
       } else {
         siblingDiv.style.display = "none";
