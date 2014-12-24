@@ -18,7 +18,7 @@ TabularForm.prototype.addRow = function() {
       
   var btn = document.getElementById(rowNumber);
   btn.setAttribute('onclick', "submit('" + rowNumber + "')");
-};
+}
 
 var submit = function(rowNumber) {
   var inputs = document.getElementsByClassName(rowNumber);
@@ -38,7 +38,7 @@ var submit = function(rowNumber) {
   } else {
     alert('Make sure there are no empty fields.');
   }
-};   
+}
 
     function validate(email) {
       var atpos = email.indexOf("@");
