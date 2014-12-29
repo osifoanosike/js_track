@@ -1,0 +1,15 @@
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  min-width: 500px;
+}
+
+tbody td {
+  padding: 12px;
+}
+thead td {
+  text-align: center;
+}
