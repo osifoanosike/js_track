@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise 11: Matching numerical values and event propogation</title>
+
+  <style>
+
+    form {
+      width: 500px;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    label {
+      width: 150px;
+      font-weight: bold;
+      float: left;
+      display: block;
+    }
+
+    input[type='submit'] {
+      width: 172px;
+      margin-left: 575px;
+    }
+    
+  </style>
+
+  <script src="exercise_12.js">
+  </script>
+</head>
+<body>
+  <form name="form" method="post" action="">
+    <label for="url">Enter URL</label>
+    <input type="text" name="url">
+  </form>
+  <br>
+    <input type="submit" value="Submit" onclick="extractUrl.extract('form')">
+</body>
+</html>
