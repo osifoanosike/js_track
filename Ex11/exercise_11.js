@@ -6,7 +6,7 @@ CheckNumeric.prototype.checkInput = function(formName) {
   var form = document.forms[formName];
   var input = form.number.value.trim();
 
-  if (empty(input)) {
+  if (validator.empty(input)) {
     alert('The Number field cannot be empty.');
     return;
   }
@@ -20,17 +20,5 @@ CheckNumeric.prototype.checkInput = function(formName) {
     setTimeout(function(){form.submit()},10000);
   }
 }
-
-  function empty(value) {
-    if (value !== null) {
-      value = value.trim();
-    }
-
-    if (!value) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
 var matchNumber = new CheckNumeric();
