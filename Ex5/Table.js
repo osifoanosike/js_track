@@ -1,6 +1,7 @@
 
-function Table() {
+function Table(objectName) {
   this.rowCount = 0;
+  this.objectName = objectName;
 }
 
 Table.prototype.addRow = function() {
@@ -23,7 +24,7 @@ Table.prototype.addRow = function() {
 
   var button = document.createElement('button');
   button.id = rowNumber;
-  button.setAttribute('onclick', "submit('" + rowNumber + "')");
+  button.setAttribute('onclick', this.objectName + ".submit('" + rowNumber + "')");
 
   var submit = document.createTextNode('Submit');
   button.appendChild(submit);
@@ -40,7 +41,7 @@ Table.prototype.addRow = function() {
   tr.appendChild(tdAction);
 }
 
-var submit = function(rowNumber) {
+Table.prototype.submit = function(rowNumber) {
   var inputs = document.getElementsByClassName(rowNumber);
 
   var name = inputs[0].firstChild.value;
@@ -52,13 +53,13 @@ var submit = function(rowNumber) {
   var editLink = document.createElement('a');
   var editText = document.createTextNode('Edit');
   editLink.appendChild(editText);
-  editLink.setAttribute('onclick', 'editRow(' + rowNumber + ')');
+  editLink.setAttribute('onclick', this.objectName + '.editRow(' + rowNumber + ')');
   editLink.href = '#';
 
   var deleteLink = document.createElement('a');
   var deleteText = document.createTextNode('Delete');
   deleteLink.appendChild(deleteText);
-  deleteLink.setAttribute('onclick', 'deleteRow(' + rowNumber + ')');
+  deleteLink.setAttribute('onclick', this.objectName + '.deleteRow(' + rowNumber + ')');
   deleteLink.href = '#';
 
   var separator = document.createTextNode(' / ');
@@ -81,7 +82,7 @@ var submit = function(rowNumber) {
   }
 }
 
-var editRow = function(rowNumber) {
+Table.prototype.editRow = function(rowNumber) {
   var tdValues = document.getElementsByClassName(rowNumber);
   for (var i = 0; i < tdValues.length; i++) {
     inputValue = tdValues[i].innerHTML;
@@ -96,7 +97,7 @@ var editRow = function(rowNumber) {
   var text = document.createTextNode('Submit');
 
   button.id = rowNumber;
-  button.setAttribute('onclick', "submit('" + rowNumber + "')");
+  button.setAttribute('onclick', this.objectName + ".submit('" + rowNumber + "')");
   button.appendChild(text);
 
   tdAction.replaceChild(button, tdAction.firstChild);
@@ -104,10 +105,10 @@ var editRow = function(rowNumber) {
   tdAction.replaceChild(button, tdAction.lastChild);
 }
     
-var deleteRow = function(rowNumber) {
+Table.prototype.deleteRow = function(rowNumber) {
   parent = document.getElementById('tbody');
   child = document.getElementsByClassName(rowNumber)[0].parentNode;
   parent.removeChild(child);
 };
 
-var tabForm = new Table();
+var tabForm = new Table('tabForm');
