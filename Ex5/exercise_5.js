@@ -67,7 +67,8 @@ Table.prototype.submit = function(rowNumber) {
   var tdAction = inputs[1].nextSibling
       
   if (!validator.empty(name) && !validator.empty(email)) {
-    if (!validator.validate(email)) {
+    if (!validator.validateEmail(email)) {
+      alert("Please enter a valid e-mail address");
       return false;
     } else {
       inputs[0].replaceChild(nameNode, inputs[0].firstChild);
