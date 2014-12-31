@@ -1,0 +1,25 @@
+
+form {
+  width: 500px;
+  margin: auto;
+  background: #cde;
+}
+
+h4 {
+  background: #ddd;
+  padding: 5px;
+}
+
+form div {
+  padding: 7px;
+}
+
+label {
+  width: 150px;
+  font-weight: bold;
+}
+
+label:not(#comment) {
+  float: left;
+  display: block;
+}

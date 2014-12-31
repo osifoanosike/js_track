@@ -3,43 +3,14 @@
 <html>
 <head>
   <title>Exercise 10: Email and URL format validation</title>
-  <style>
+  <link rel="stylesheet" type="text/css" href="style.css" />
 
-    form {
-      width: 500px;
-      margin: auto;
-      background: #cde;
-    }
-
-    h4 {
-      background: #ddd;
-      padding: 5px;
-    }
-
-    form div {
-      padding: 7px;
-    }
-
-    label {
-      width: 150px;
-      font-weight: bold;
-    }
-
-    label:not(#comment) {
-      float: left;
-      display: block;
-    }
-    
-  </style>
-
-  <script src="exercise_10.js">
-  </script>
+  <script src="../Validate.js"></script>
+  <script src="exercise_10.js"></script>
 </head>
 
 <body>
-
-
-  <form name="form" onsubmit="validator.checkValue('form')" method="post" action="">
+  <form name="form" onsubmit="validation.checkValue('form')" method="post" action="">
     <h4 style="text-align:center">Registration Form</h4>
     <div>
       <label for="loginid">Login Id</label>
