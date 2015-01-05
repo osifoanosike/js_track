@@ -3,19 +3,25 @@ function Account() {
 }
 
 Account.prototype.getName = function() {
-  do {
-    var firstName = prompt('What is your first name');
-  } while (validator.empty(firstName))
 
-  do {
-    var lastName = prompt('What is your last name');
-  } while (validator.empty(lastName))
+  window.addEventListener('load', function() {
 
-  var message = 'Hello ' + firstName + ' ' + lastName + '.';
+    do {
+      var firstName = prompt('What is your first name');
+    } while (validator.empty(firstName))
 
-  alert(message);
+    do {
+      var lastName = prompt('What is your last name');
+    } while (validator.empty(lastName))
 
-  document.write('<strong>' + message + '</strong>');
+    var message = 'Hello ' + firstName + ' ' + lastName + '.';
+
+    alert(message);
+
+    document.write('<strong>' + message + '</strong>');
+
+  });  
 }
 
 var owner = new Account();
+owner.getName();
