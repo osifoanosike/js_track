@@ -4,30 +4,53 @@ function Validation() {
 
 Validation.prototype.checkValue = function(formName) {
 
-  var form = document.forms[formName];
+  window,addEventListener('load', function() {
 
-  if (validator.empty(form.loginid.value)) {
-    message = "Login Id can't be empty.";
-  } else if (validator.empty(form.email.value)) {
-    message = "Email can't be empty.";
-  } else if (validator.empty(form.name.value)) {
-    message = "Name can't be empty.";
-  } else if (validator.empty(form.timezone.value)) {
-    message = "Timezone can't be empty.";
-  } else if (validator.empty(form.homepage.value)) {
-    message = "Homepage can't be empty.";
-  } else if (validator.empty(form.about.value)) {
-    message = "About me can't be empty.";
-  } else if (form.about.value.length < 50) {
-    message = 'About me section must have at least 50 characters.';
-  } else {
-    message = '';
-  }
+    var form = document.forms[formName];
 
-  if (message) {
-    alert(message);
-    event.preventDefault();
-  }
+    form.addEventListener('submit', function() {
+      
+      var message = []
+      var i = 0;
+
+      if (validator.empty(form.loginid.value)) {
+        message[i++] = "Login Id can't be empty.";
+      } 
+      if (validator.empty(form.email.value)) {
+        message[i++] = "Email can't be empty.";
+      } 
+      if (validator.empty(form.name.value)) {
+        message[i++] = "Name can't be empty.";
+      } 
+      if (validator.empty(form.timezone.value)) {
+        message[i++] = "Timezone can't be empty.";
+      } 
+      if (validator.empty(form.homepage.value)) {
+        message[i++] = "Homepage can't be empty.";
+      } 
+      if (validator.empty(form.about.value)) {
+        message[i++] = "About me can't be empty.";
+      } 
+      if (form.about.value.length < 50) {
+        message[i++] = 'About me section must have at least 50 characters.';
+      }
+
+      if (message) {
+        for (var i = 0; i < message.length; i++) {
+          alert(message[i]);
+        }
+        event.preventDefault();
+      }
+    });
+
+
+  });
+
 }
 
+/*    var checkInput = function() {
+
+    }*/
+
 var validation = new Validation();
+validation.checkValue('form');
