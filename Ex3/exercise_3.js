@@ -1,6 +1,5 @@
 
-function CheckLimit(className, limit) {
-  this.className = className;
+function CheckLimit(limit) {
   this.limit  = limit;
   this.count = 0;
 }
@@ -13,40 +12,30 @@ CheckLimit.prototype.check = function(id) {
 
   if (checkbox.checked) {
     if (this.count < this.limit) {
-      this.count++
+      this.count++;
+      // var checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
     } else {
       checkbox.checked = false;
-      var className = '.' + this.className;
 
-      var checkboxes = document.querySelectorAll(className);
-      var checkedValue = [];
-      var len = checkboxes.length;
-      var and = len - 1;
-      
-      for (var i = 0; i < len; i++) {
-        if (checkboxes[i].checked) {
-          checkedValue.push(checkboxes[i].value);
-        }
-      }
+      checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
 
       var message = 'Only ' + this.limit + ' days can be selected. You have already selected '
-                      + checkedValue[0] + ', ' + checkedValue[1] + ' and ' + checkedValue[2] + '.';
+                      + checkedBoxes[0].value + ', ' + checkedBoxes[1].value + ' and ' + checkedBoxes[2].value + '.';
       alert(message);
     }
   } else {
-    this.count--
-  }
+    this.count--;
+  };
 };
 
 CheckLimit.prototype.uncheck = function() {
   
   var none = document.getElementById('none');
-  var className = '.' + this.className;
 
-  var checkboxes = document.querySelectorAll(className);
-  var len = checkboxes.length;
+  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+  var len = checkedBoxes.length;
   for (i = 0; i < len; i++) {
-    checkboxes[i].checked = false;
+    checkedBoxes[i].checked = false;
   }
 
   this.count = 0;
