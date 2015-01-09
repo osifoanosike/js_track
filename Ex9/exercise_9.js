@@ -1,29 +1,20 @@
 
-function SelectCountry() {
+function MoveCountry() {
 } 
 
-SelectCountry.prototype.addCountry = function () {
-  try {  
-    var countries = document.getElementById('add');
-    var selectedCountries = document.getElementById('remove');
-    
-    var selectedCountry = countries.selectedOptions[0];
+MoveCountry.prototype.move = function(startBoxId, destinationBoxId) {
 
-    selectedCountries.appendChild(selectedCountry);
-  } catch(e) {
-  }
-}
-
-SelectCountry.prototype.removeCountry = function() {
   try {
-    var countries = document.getElementById('add');
-    var selectedCountries = document.getElementById('remove');
-
-    var selectedCountry = selectedCountries.selectedOptions[0];
+    var countries = document.getElementById(startBoxId);
+    var movedCountries = document.getElementById(destinationBoxId);
     
-    countries.appendChild(selectedCountry);
+    var country = countries.selectedOptions[0];
+
+    movedCountries.appendChild(country);
   } catch(e) {
+
   }
+
 }
 
-var selectCountry = new SelectCountry();
+var moveCountry = new MoveCountry();

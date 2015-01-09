@@ -18,11 +18,11 @@
     <option value="gambia">Gambia</option>
     <option value="guinee">Guinee</option>
   </select>
-  <button onclick="selectCountry.addCountry()">Add</button>
+  <button onclick="moveCountry.move('add', 'remove')">Add</button>
 
   <h4>Selected Countries &mdash; Second Box</h4>
   <select id="remove" size="6"></select>
-  <button onclick="selectCountry.removeCountry()">Remove</button>
+  <button onclick="moveCountry.move('remove', 'add')">Remove</button>
     
   </select>
 </body>
