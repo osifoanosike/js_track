@@ -13,7 +13,6 @@ CheckLimit.prototype.check = function(id) {
   if (checkbox.checked) {
     if (this.count < this.limit) {
       this.count++;
-      // var checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
     } else {
       checkbox.checked = false;
 
