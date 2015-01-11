@@ -16,11 +16,9 @@ CheckLimit.prototype.check = function(id) {
     } else {
       checkbox.checked = false;
 
-      checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
+      var checkedBoxes = document.querySelectorAll('input.days:checked');
 
-      var message = 'Only ' + this.limit + ' days can be selected. You have already selected '
-                      + checkedBoxes[0].value + ', ' + checkedBoxes[1].value + ' and ' + checkedBoxes[2].value + '.';
-      alert(message);
+      composer.composeMessage(checkedBoxes);
     }
   } else {
     this.count--;
@@ -31,7 +29,7 @@ CheckLimit.prototype.uncheck = function() {
   
   var none = document.getElementById('none');
 
-  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+  var checkedBoxes = document.querySelectorAll('input.days:checked');
   var len = checkedBoxes.length;
   for (i = 0; i < len; i++) {
     checkedBoxes[i].checked = false;
@@ -40,4 +38,4 @@ CheckLimit.prototype.uncheck = function() {
   this.count = 0;
 };
 
-var checkLimit = new CheckLimit('days', 3);
+var checkLimit = new CheckLimit(3);
