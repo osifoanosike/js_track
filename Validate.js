@@ -33,4 +33,11 @@ Validate.prototype.validateUrl = function(url) {
   return false;
 }
 
+Validate.prototype.validateMinLength = function(value, minLength) {
+  if (value.trim().length < minLength) {
+    return true;
+  }
+  return false;
+}
+
 var validator = new Validate();
