@@ -5,25 +5,33 @@ function ChildrenCheck() {
 ChildrenCheck.prototype.check = function(className) {
 
   var parentSelector = '.' + className;
-  var childrenSelector = 'div.' + className;
+  var childrenContainer = 'div.' + className;
+  var childrenSelector = 'div.' + className + ' input';
 
   var parentCheckbox = document.querySelector(parentSelector);
-  var siblingDiv = document.querySelector(childrenSelector);
+  var siblingDiv = document.querySelector(childrenContainer);
+  var childCheckboxes = document.querySelectorAll(childrenSelector);
 
-  siblingDiv.style.display = "block";
-  siblingDiv.scrollIntoView(true);
-  var childCheckbox = siblingDiv.childNodes
+  if (parentCheckbox.checked) {
 
-  for (var i = 0; i < childCheckbox.length; i++) {
-    if (childCheckbox[i].nodeName.toLowerCase() == "input") {
-      if (parentCheckbox.checked) {
-        childCheckbox[i].checked = true;
-      } else {
-        siblingDiv.style.display = "none";
-        childCheckbox[i].checked = false;
-      }
-    }
+    siblingDiv.style.display = 'block';
+    check(childCheckboxes, true);
+    siblingDiv.scrollIntoView(true);
+
+  } else {
+
+    check(childCheckboxes, false);
+    siblingDiv.style.display = 'none';
   }
 }
 
-var checkChild = new ChildrenCheck()
+      function check(checkBoxes, checkStatus) {
+
+        var count = checkBoxes.length;
+
+        for (var i = 0; i < count; i++) {
+          checkBoxes[i].checked = checkStatus;
+        }
+      }
+
+var checkChild = new ChildrenCheck();
