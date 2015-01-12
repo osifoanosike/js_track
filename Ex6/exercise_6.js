@@ -4,7 +4,7 @@ function Validation() {
 
 Validation.prototype.checkValue = function(formName) {
 
-  window,addEventListener('load', function() {
+  window.addEventListener('load', function() {
 
     var form = document.forms[formName];
 
