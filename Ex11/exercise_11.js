@@ -8,7 +8,7 @@ CheckNumeric.prototype.checkInput = function(formName) {
 
     var button = document.getElementById('submit');
     
-    button.addEventListener('click', function() {
+      button.addEventListener('click', function() {
       
       var form = document.forms[formName];
       var input = form.number.value.trim();
