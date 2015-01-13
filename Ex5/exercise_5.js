@@ -7,84 +7,68 @@ function Table(objectName) {
 Table.prototype.addRow = function() {
   
   this.rowCount++;
-  var rowNumber = this.rowCount.toString();
-  var tbody = document.getElementById('tbody');
-  var tr = document.createElement('tr');
-  tbody.appendChild(tr);
+  rowNumber = this.rowCount.toString();
 
-  var tdName = document.createElement('td');
-  var tdEmail = document.createElement('td');
+  var tdName = createTableData();
+  var tdEmail = createTableData();
+
   var tdAction = document.createElement('td');
 
-  var inputName = document.createElement('input');
-  var inputEmail = document.createElement('input');
-
-  inputName.type = 'text';
-  inputEmail.type = 'text';
-
-  var button = document.createElement('button');
+  var button = createButton('Submit');
   button.id = rowNumber;
   button.setAttribute('onclick', this.objectName + ".submit('" + rowNumber + "')");
 
-  var submit = document.createTextNode('Submit');
-  button.appendChild(submit);
-
-  tdName.className = rowNumber;
-  tdEmail.className = rowNumber;
-
-  tdName.appendChild(inputName);
-  tdEmail.appendChild(inputEmail);
   tdAction.appendChild(button);
 
-  tr.appendChild(tdName);
-  tr.appendChild(tdEmail);
-  tr.appendChild(tdAction);
+  var tr = document.createElement('tr');
+  append(tr, tdName, tdEmail, tdAction);
+
+  tbody = document.getElementById('tbody');
+  tbody.appendChild(tr);
 }
 
+
+
 Table.prototype.submit = function(rowNumber) {
+
   var inputs = document.getElementsByClassName(rowNumber);
 
-  var name = inputs[0].firstChild.value;
-  var email = inputs[1].firstChild.value;
+  var name = inputs[0].firstChild.value
+  var email = inputs[1].firstChild.value
 
-  var nameNode = document.createTextNode(name);
-  var emailNode = document.createTextNode(email);
+  var inputTexts = getValues(inputs);
 
-  var editLink = document.createElement('a');
-  var editText = document.createTextNode('Edit');
-  editLink.appendChild(editText);
+  var editLink = createLink('Edit');
+  var deleteLink = createLink('Delete');
+
   editLink.setAttribute('onclick', this.objectName + '.editRow(' + rowNumber + ')');
-  editLink.href = '#';
-
-  var deleteLink = document.createElement('a');
-  var deleteText = document.createTextNode('Delete');
-  deleteLink.appendChild(deleteText);
   deleteLink.setAttribute('onclick', this.objectName + '.deleteRow(' + rowNumber + ')');
-  deleteLink.href = '#';
 
   var separator = document.createTextNode(' / ');
 
-  var tdAction = inputs[1].nextSibling
+  var tdAction = inputs[1].nextSibling;
       
   if (!validator.empty(name) && !validator.empty(email)) {
     if (!validator.validateEmail(email)) {
       alert("Please enter a valid e-mail address");
       return false;
     } else {
-      inputs[0].replaceChild(nameNode, inputs[0].firstChild);
-      inputs[1].replaceChild(emailNode, inputs[1].firstChild);
 
+      replaceField(inputs, inputTexts);
       tdAction.replaceChild(editLink, inputs[1].nextSibling.firstChild);
-      tdAction.appendChild(separator);
-      tdAction.appendChild(deleteLink);         
+      append(tdAction, separator, deleteLink);
     }
   } else {
     alert('Make sure there are no empty fields.');
   }
 }
 
+
+
 Table.prototype.editRow = function(rowNumber) {
+
   var tdValues = document.getElementsByClassName(rowNumber);
+
   for (var i = 0; i < tdValues.length; i++) {
     inputValue = tdValues[i].innerHTML;
     input = document.createElement('input');
@@ -94,22 +78,72 @@ Table.prototype.editRow = function(rowNumber) {
   }
 
   var tdAction = tdValues[1].nextSibling;
-  var button = document.createElement('button');
-  var text = document.createTextNode('Submit');
 
-  button.id = rowNumber;
+  var button = createButton('Submit');
   button.setAttribute('onclick', this.objectName + ".submit('" + rowNumber + "')");
-  button.appendChild(text);
 
   tdAction.replaceChild(button, tdAction.firstChild);
   tdAction.replaceChild(button, tdAction.childNodes[1])
   tdAction.replaceChild(button, tdAction.lastChild);
 }
-    
+
+
+
 Table.prototype.deleteRow = function(rowNumber) {
   parent = document.getElementById('tbody');
   child = document.getElementsByClassName(rowNumber)[0].parentNode;
   parent.removeChild(child);
-};
+}
+
+
+    function createTableData() {
+      var td = document.createElement('td');
+      var input = document.createElement('input');
+      input.type = 'text';
+      td.className = rowNumber;
+      td.appendChild(input);
+      return td;
+    }
+
+    function createLink(text) {
+      var link = document.createElement('a');
+      var text = document.createTextNode(text);
+      link.appendChild(text);
+      link.href = '#';
+      return link;
+    }
+
+    function getValues(inputs) {
+      var text = [];
+      for (var i = 0; i < inputs.length; i++) {
+        var value = inputs[i].firstChild.value;
+        text[i] = document.createTextNode(value);
+      }
+      return text;
+    }
+
+    function replaceField(inputField, inputText) {
+      var count = inputField.length;
+      for (var i = 0; i < count; i++) {
+        inputField[i].replaceChild(inputText[i], inputField[i].firstChild);
+      }
+    }
+
+
+    /** Use when appending muliple children node to a parent node **/
+
+    function append(parent, children) {
+      for (var i = 1; i < arguments.length; i++) {
+        parent.appendChild(arguments[i]);
+      }
+    }
+
+    function createButton(text) {
+      var button = document.createElement('button');
+      var text = document.createTextNode(text);
+      button.appendChild(text);
+      return button;
+    }
+
 
 var tabForm = new Table('tabForm');
