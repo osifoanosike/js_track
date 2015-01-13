@@ -4,38 +4,49 @@ function ExtractUrl() {
 
 ExtractUrl.prototype.extract = function(formName) {
 
-  var form = document.forms[formName];
-  var url = form.url.value;
+  window.addEventListener('load', function() {
 
-  var regex = /(\/\/)[a-z0-9.-]+\//g;
-  var regex2 = /[a-z0-9.-]/g;
-  
-  var extract = url.match(regex);
+    button = document.getElementById('submit');
 
-  var webAddress = extract[0].match(regex2).join('');
+    button.addEventListener('click', function() {
+      
+      var form = document.forms[formName];
+      var url = form.url.value;
 
-  var webArray = webAddress.split('.');
+      var regex = /(\/\/)[a-z0-9.-]+\//g;
+      var regex2 = /[a-z0-9.-]/g;
+      
+      var extract = url.match(regex);
 
-  if (webAddress.match(/co(?=\.)/)) {
+      var webAddress = extract[0].match(regex2).join('');
 
-    if (webArray.length == 3) {
-      alert('Domain: ' + webAddress);
-    } else {
-      alert('Domain: ' + webArray[1] + '.' + webArray[2] + '.' + webArray[3] + '\n\n'
-            + 'Subdomain: ' + webArray[0]
-      );
-    }
+      var webArray = webAddress.split('.');
 
-  } else {
+      if (webAddress.match(/co(?=\.)/)) {
 
-    if (webArray.length == 2) {
-      alert('Domain: ' + webAddress);
-    } else {
-      alert('Domain: ' + webArray[1] + '.' + webArray[2] + '\n\n'
-            + 'Subdomain: ' + webArray[0]
-      );
-    }
-  }
+        if (webArray.length == 3) {
+          alert('Domain: ' + webAddress);
+        } else {
+          alert('Domain: ' + webArray[1] + '.' + webArray[2] + '.' + webArray[3] + '\n\n'
+                + 'Subdomain: ' + webArray[0]
+          );
+        }
+
+      } else {
+
+        if (webArray.length == 2) {
+          alert('Domain: ' + webAddress);
+        } else {
+          alert('Domain: ' + webArray[1] + '.' + webArray[2] + '\n\n'
+                + 'Subdomain: ' + webArray[0]
+          );
+        }
+      }
+    })
+
+  });
+
 }
 
 var extractUrl = new ExtractUrl();
+extractUrl.extract('form');
