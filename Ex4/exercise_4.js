@@ -15,23 +15,23 @@ ChildrenCheck.prototype.check = function(className) {
   if (parentCheckbox.checked) {
 
     siblingDiv.style.display = 'block';
-    check(childCheckboxes, true);
+    this.markCheckBoxes(childCheckboxes, true);
     siblingDiv.scrollIntoView(true);
 
   } else {
 
-    check(childCheckboxes, false);
+    this.markCheckBoxes(childCheckboxes, false);
     siblingDiv.style.display = 'none';
   }
 }
 
-      function check(checkBoxes, checkStatus) {
+ChildrenCheck.prototype.markCheckBoxes = function(checkBoxes, checkStatus) {
 
-        var count = checkBoxes.length;
+  var count = checkBoxes.length;
 
-        for (var i = 0; i < count; i++) {
-          checkBoxes[i].checked = checkStatus;
-        }
-      }
+  for (var i = 0; i < count; i++) {
+    checkBoxes[i].checked = checkStatus;
+  }
+}
 
 var checkChild = new ChildrenCheck();
