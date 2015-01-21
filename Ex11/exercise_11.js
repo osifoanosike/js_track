@@ -1,5 +1,6 @@
 
 function NumberCheck() {
+  this.regexNumeral = /^[-]?[0-9]+[.]?[0-9]+$/;
   this.number;
 }
 
@@ -43,9 +44,8 @@ NumberCheck.prototype.isEmpty = function() {
 NumberCheck.prototype.isNumber = function() {
 
   var result = document.getElementById('result');
-  var regexNumeral = /^[-]?[0-9]+[.]?[0-9]+$/;
 
-  if (regexNumeral.test(this.number)) {
+  if (this.regexNumeral.test(this.number)) {
     result.value = 'True';
     alert('True! The input is a number.\n\nClick OK and wait for 5 seconds for the form to submit.');
     setTimeout(function() {
