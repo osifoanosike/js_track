@@ -8,13 +8,12 @@ NumberCheck.prototype.checkNumber = function(formId) {
 
   var that = this;
   
-  window.addEventListener('load', function() {
+  window.addEventListener('load', function(event) {
 
-    var button = document.getElementById('submit');
+    var form = document.getElementById(formId);
     
-    button.addEventListener('click', function() {
-      
-      var form = document.getElementById(formId);
+    form.addEventListener('submit', function() {
+
       var input = document.getElementById('number');
       that.number = input.value.trim();
 
@@ -47,14 +46,11 @@ NumberCheck.prototype.isNumber = function() {
 
   if (this.regexNumeral.test(this.number)) {
     result.value = 'True';
-    alert('True! The input is a number.\n\nClick OK and wait for 5 seconds for the form to submit.');
-    setTimeout(function() {
-      form.submit()
-    }, 5000);
-
+    alert('True! The input is a number.');
   } else {
     result.value = 'False';
     alert('False! The input is not a number.');
+    event.preventDefault();
   }
 }
 
