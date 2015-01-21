@@ -1,5 +1,6 @@
 
 function NumberCheck() {
+  this.number;
 }
 
 NumberCheck.prototype.checkNumber = function(formId) {
@@ -14,37 +15,37 @@ NumberCheck.prototype.checkNumber = function(formId) {
       
       var form = document.getElementById(formId);
       var input = document.getElementById('number');
-      var number = input.value.trim();
+      that.number = input.value.trim();
 
-      that.validateInput(number);
+      that.validateInput(that.number);
     });
 
   });
 }
 
-NumberCheck.prototype.validateInput = function(input) {
+NumberCheck.prototype.validateInput = function() {
 
-  if (this.isEmpty(input)) {
+  if (this.isEmpty(this.number)) {
     return;
   } else {
-    this.isNumber(input);
+    this.isNumber(this.number);
   }
 
 }
 
-NumberCheck.prototype.isEmpty = function(input) {
-  if (validator.empty(input)) {
+NumberCheck.prototype.isEmpty = function() {
+  if (validator.empty(this.number)) {
     alert('The Number field cannot be empty.');
     return true;
   }
 }
 
-NumberCheck.prototype.isNumber = function(input) {
+NumberCheck.prototype.isNumber = function() {
 
-  var regexNumeral = /^[0-9]+$/;
   var result = document.getElementById('result');
+  var regexNumeral = /^[-]?[0-9]+[.]?[0-9]+$/;
 
-  if (regexNumeral.test(input)) {
+  if (regexNumeral.test(this.number)) {
     result.value = 'True';
     alert('True! The input is a number.\n\nClick OK and wait for 5 seconds for the form to submit.');
     setTimeout(function() {
