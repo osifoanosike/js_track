@@ -4,14 +4,14 @@ function Row() {
 
 Row.prototype.submitRow = function() {
 
-  id = this.id;
+  var id = this.id;
 
-  inputs = document.getElementsByClassName(id);
+  var inputs = document.getElementsByClassName(id);
 
-  name = inputs[0].firstChild.value;
-  email = inputs[1].firstChild.value;
+  var name = inputs[0].firstChild.value;
+  var email = inputs[1].firstChild.value;
 
-  inputTexts = cell.getValues(inputs);
+  var inputTexts = cell.getValues(inputs);
 
   var separator = document.createTextNode(' / ');
 
@@ -33,13 +33,13 @@ Row.prototype.submitRow = function() {
 
 Row.prototype.editRow = function() {
 
-  id = this.id;
+  var id = this.id;
 
   var tdValues = document.getElementsByClassName(id);
 
   for (var i = 0; i < tdValues.length; i++) {
-    inputValue = tdValues[i].innerHTML;
-    input = document.createElement('input');
+    var inputValue = tdValues[i].innerHTML;
+    var input = document.createElement('input');
     input.value = inputValue;
     input.type = 'text';
     tdValues[i].replaceChild(input, tdValues[i].firstChild);
@@ -55,9 +55,9 @@ Row.prototype.editRow = function() {
 }
 
 Row.prototype.deleteRow = function() {
-  id = this.id;
-  parent = document.getElementById('tbody');
-  child = document.getElementsByClassName(id)[0].parentNode;
+  var id = this.id;
+  var parent = document.getElementById('tbody');
+  var child = document.getElementsByClassName(id)[0].parentNode;
   parent.removeChild(child);
 }
 
