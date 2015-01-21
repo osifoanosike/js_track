@@ -13,15 +13,15 @@ Validate.prototype.empty = function(value) {
   } else {
     return false;
   }
-};
+}
 
-Validate.prototype.validateEmail = function(email) {
-  var atPosition = email.indexOf("@");
-  var dotPosition = email.lastIndexOf(".");
-  if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= email.length) {
-    return false;
+Validate.prototype.validateEmail = function(url) {
+  
+  var emailRegExp = /^[a-z0-9.-_]+@[a-z0-9]{2,}.[a-z.]{2,6}/
+  if (emailRegExp.test(url)) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 Validate.prototype.validateUrl = function(url) {
