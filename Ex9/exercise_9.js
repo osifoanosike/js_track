@@ -4,14 +4,17 @@ function MoveCountry() {
 
 MoveCountry.prototype.move = function(startBoxId, destinationBoxId) {
 
-  try {
-    var countries = document.getElementById(startBoxId);
-    var movedCountries = document.getElementById(destinationBoxId);
-    
-    var country = countries.selectedOptions[0];
+  var countries = document.getElementById(startBoxId);
+  var movedCountries = document.getElementById(destinationBoxId);
 
-    movedCountries.appendChild(country);
-  } catch(e) {
+  if (countries.selectedOptions.length) {
+
+    var country = countries.selectedOptions;
+
+    for (var i = 0; i < country.length; i++) {
+      movedCountries.appendChild(country[i]);
+      i--;
+    }
 
   }
 
