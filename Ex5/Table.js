@@ -28,7 +28,7 @@ Table.prototype.addRow = function() {
       var tr = document.createElement('tr');
       that.append(tr, tdName, tdEmail, tdAction);
 
-      tbody = document.getElementById('tbody');
+      var tbody = document.getElementById('tbody');
       tbody.appendChild(tr);
 
     });
