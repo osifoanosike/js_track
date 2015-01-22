@@ -16,40 +16,43 @@ Domain.prototype.extractDomain = function() {
     var url = document.getElementById('url');
     var urlValue = url.value;
 
-    var webAddress = urlValue.replace(that.regex1, '');
+    var extract = urlValue.replace(that.regex1, '');
 
-    webAddress = webAddress.match(that.regex2)[0];
+    var address = extract.match(that.regex2)[0];
 
-    var webArray = webAddress.split('.');
+    that.displayDomain(address);
 
-    if (webAddress.match(/co(?=\.)/)) {
-
-      if (webArray.length == 3) {
-        alert('Domain: ' + webAddress);
-      } else {
-        alert('Domain: ' + webArray[1] + '.' + webArray[2] + '.' + webArray[3] + '\n\n'
-              + 'Subdomain: ' + webArray[0]
-        );
-      }
-
-    } else {
-
-      if (webArray.length == 2) {
-        alert('Domain: ' + webAddress);
-      } else {
-        alert('Domain: ' + webArray[1] + '.' + webArray[2] + '\n\n'
-              + 'Subdomain: ' + webArray[0]
-        );
-      }
-    }
   });
 
 }
 
+Domain.prototype.displayDomain = function(webAddress) {
+
+  var webArray = webAddress.split('.');
+
+  if (webAddress.match(/co(?=\.)/)) {
+
+    if (webArray.length == 3) {
+      alert('Domain: ' + webAddress);
+    } else {
+      alert('Domain: ' + webArray[1] + '.' + webArray[2] + '.' + webArray[3] + '\n\n'
+            + 'Subdomain: ' + webArray[0]
+      );
+    }
+
+  } else {
+
+    if (webArray.length == 2) {
+      alert('Domain: ' + webAddress);
+    } else {
+      alert('Domain: ' + webArray[1] + '.' + webArray[2] + '\n\n'
+            + 'Subdomain: ' + webArray[0]
+      );
+    }
+  }
+}
 
 window.addEventListener('load', function() {
-  
   var domain = new Domain();
   domain.extractDomain();
-
 });
