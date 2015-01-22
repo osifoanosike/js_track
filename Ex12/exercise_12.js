@@ -1,22 +1,24 @@
 
-function ExtractUrl() {
+function Domain() {
+  this.regex1 = /^(https?:\/\/www\.|https?:\/\/|ftp:\/\/|www\.)/i;
+  this.regex2 = /(?:[a-z0-9.-]+)(?=(?:\/)?)/i;
 }
 
-ExtractUrl.prototype.extract = function(formName) {
+Domain.prototype.extractDomain = function() {
+
+  that = this;
 
   var button = document.getElementById('submit');
 
   button.addEventListener('click', function() {
     
-    var form = document.forms[formName];
-    var url = form.url.value;
+    // var form = document.getElementById(formName);
+    var url = document.getElementById('url');
+    var urlValue = url.value;
 
-    var regex = /(\/\/)[a-z0-9.-]+\//g;
-    var regex2 = /[a-z0-9.-]/g;
-    
-    var extract = url.match(regex);
+    var webAddress = urlValue.replace(that.regex1, '');
 
-    var webAddress = extract[0].match(regex2).join('');
+    webAddress = webAddress.match(that.regex2)[0];
 
     var webArray = webAddress.split('.');
 
@@ -47,7 +49,7 @@ ExtractUrl.prototype.extract = function(formName) {
 
 window.addEventListener('load', function() {
   
-  var extractUrl = new ExtractUrl();
-  extractUrl.extract('form');
+  var domain = new Domain();
+  domain.extractDomain();
 
 });
