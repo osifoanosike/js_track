@@ -7,31 +7,27 @@ Table.prototype.addRow = function() {
 
   that = this;
 
-  window.addEventListener('load', function() {
+  var addButton = document.getElementById('add');
 
-    var addButton = document.getElementById('add');
+  addButton.addEventListener('click', function() {
 
-    addButton.addEventListener('click', function() {
+    that.rowCount++;
+    var rowNumber = that.rowCount.toString();
 
-      that.rowCount++;
-      var rowNumber = that.rowCount.toString();
+    var tdName = cell.createTableData(rowNumber);
+    var tdEmail = cell.createTableData(rowNumber);
 
-      var tdName = cell.createTableData(rowNumber);
-      var tdEmail = cell.createTableData(rowNumber);
+    var tdAction = document.createElement('td');
 
-      var tdAction = document.createElement('td');
+    var button = cell.createButton('Submit', rowNumber);
 
-      var button = cell.createButton('Submit', rowNumber);
+    tdAction.appendChild(button);
 
-      tdAction.appendChild(button);
+    var tr = document.createElement('tr');
+    that.append(tr, tdName, tdEmail, tdAction);
 
-      var tr = document.createElement('tr');
-      that.append(tr, tdName, tdEmail, tdAction);
-
-      var tbody = document.getElementById('tbody');
-      tbody.appendChild(tr);
-
-    });
+    var tbody = document.getElementById('tbody');
+    tbody.appendChild(tr);
 
   });
   
@@ -45,5 +41,7 @@ Table.prototype.append = function(parent, children) {
   }
 }
 
-var tabForm = new Table('tabForm');
-tabForm.addRow();
+window.addEventListener('load', function() {
+  var tabForm = new Table('tabForm');
+  tabForm.addRow();
+});
