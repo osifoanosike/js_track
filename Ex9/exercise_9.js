@@ -2,22 +2,17 @@
 function MoveCountry() {
 } 
 
-MoveCountry.prototype.move = function(startBoxId, destinationBoxId) {
+MoveCountry.prototype.move = function(sourceBoxId, destinationBoxId) {
 
-  var countries = document.getElementById(startBoxId);
+  var countries = document.getElementById(sourceBoxId);
   var movedCountries = document.getElementById(destinationBoxId);
 
-  if (countries.selectedOptions.length) {
+  var selectedCountries = countries.selectedOptions;
 
-    var country = countries.selectedOptions;
-
-    for (var i = 0; i < country.length; i++) {
-      movedCountries.appendChild(country[i]);
-      i--;
-    }
-
+  for (var i = 0; i < selectedCountries.length; i++) {
+    movedCountries.appendChild(country[i]);
+    i--;
   }
-
 }
 
 var moveCountry = new MoveCountry();
