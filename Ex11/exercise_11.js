@@ -1,6 +1,7 @@
 
 function NumberCheck() {
   this.number;
+  this.result;
 }
 
 NumberCheck.prototype.checkNumber = function(formId) {
@@ -10,7 +11,7 @@ NumberCheck.prototype.checkNumber = function(formId) {
   var form = document.getElementById(formId);
   
   form.addEventListener('submit', function() {
-    
+
     var input = document.getElementById('number');
     that.number = input.value.trim();
 
@@ -36,24 +37,24 @@ NumberCheck.prototype.isEmpty = function() {
 
 NumberCheck.prototype.isNumber = function() {
 
-  var result = document.getElementById('result');
-  if (regex.numeral.test(this.number)) {
-    result.value = 'True';
+  this.result = document.getElementById('result');
+  if (REGEX.numeral.test(this.number)) {
+    this.result.value = 'True';
     alert('True! The input is a number.');
   } else {
-    result.value = 'False';
+    this.result.value = 'False';
     alert('False! The input is not a number.');
     event.preventDefault();
   }
 }
 
-var regex = {
+var REGEX = {
   numeral: /^[-]?[0-9]+[.]?[0-9]+$/
 };
 
-Object.freeze(regex);
+Object.freeze(REGEX);
 
 window.addEventListener('load', function(event) {
   var matchNumber = new NumberCheck();
-  matchNumber.checkNumber('form');
+  matchNumber.checkNumber('matchNumber');
 });
