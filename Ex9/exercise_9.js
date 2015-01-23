@@ -4,13 +4,13 @@ function MoveCountry() {
 
 MoveCountry.prototype.move = function(sourceBoxId, destinationBoxId) {
 
-  var countries = document.getElementById(sourceBoxId);
-  var movedCountries = document.getElementById(destinationBoxId);
+  var sourceList = document.getElementById(sourceBoxId);
+  var destinationList = document.getElementById(destinationBoxId);
 
-  var selectedCountries = countries.selectedOptions;
+  var selectedCountries = sourceList.selectedOptions;
 
   for (var i = 0; i < selectedCountries.length; i++) {
-    movedCountries.appendChild(country[i]);
+    destinationList.appendChild(selectedCountries[i]);
     i--;
   }
 }
