@@ -1,6 +1,6 @@
 
 function Domain() {
-  this.regex1 = /^(https?:\/\/www\.|https?:\/\/|ftp:\/\/|www\.)/i;
+  this.regex1 = /^(https?:\/\/www\.|https?:\/\/|ftp:\/\/www\.|ftp:\/\/|www\.)/i;
   this.regex2 = /(?:[a-z0-9.-]+)(?=(?:\/)?)/i;
 }
 
