@@ -17,7 +17,7 @@ Validate.prototype.empty = function(value) {
 
 Validate.prototype.validateEmail = function(url) {
   
-  var emailRegExp = /^[a-z0-9.-_]+@[a-z0-9]{2,}.[a-z.]{2,6}/i;
+  var emailRegExp = /^[a-z]+(?:[a-z0-9]+)*(?:(\.|-|_)[a-z0-9]+)*@[a-z]+(?:[a-z0-9]+)*(?:(\.|-|_)[a-z0-9]+)*(?:\.[a-z]{2,6}(?:\.[a-z]{2})*)$/i;
   if (emailRegExp.test(url)) {
     return true;
   }
