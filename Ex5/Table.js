@@ -3,34 +3,34 @@ function Table() {
   this.rowCount = 0;
 }
 
+Table.prototype.init = function() {
+  
+  that = this;
+  var addButton = document.getElementById('add');
+    addButton.addEventListener('click', function() {
+    that.addRow();
+  });
+}
+
 Table.prototype.addRow = function() {
 
-  that = this;
+  that.rowCount++;
+  var rowNumber = that.rowCount.toString();
 
-  var addButton = document.getElementById('add');
+  var tdName = cell.createTableData(rowNumber);
+  var tdEmail = cell.createTableData(rowNumber);
 
-  addButton.addEventListener('click', function() {
+  var tdAction = document.createElement('td');
 
-    that.rowCount++;
-    var rowNumber = that.rowCount.toString();
+  var button = cell.createButton('Submit', rowNumber);
 
-    var tdName = cell.createTableData(rowNumber);
-    var tdEmail = cell.createTableData(rowNumber);
+  tdAction.appendChild(button);
 
-    var tdAction = document.createElement('td');
+  var tr = document.createElement('tr');
+  that.append(tr, tdName, tdEmail, tdAction);
 
-    var button = cell.createButton('Submit', rowNumber);
-
-    tdAction.appendChild(button);
-
-    var tr = document.createElement('tr');
-    that.append(tr, tdName, tdEmail, tdAction);
-
-    var tbody = document.getElementById('tbody');
-    tbody.appendChild(tr);
-
-  });
-  
+  var tbody = document.getElementById('tbody');
+  tbody.appendChild(tr); 
 }
     
 /** Use when appending muliple children node to a parent node */
@@ -43,5 +43,5 @@ Table.prototype.append = function(parent, children) {
 
 window.addEventListener('load', function() {
   var tabForm = new Table('tabForm');
-  tabForm.addRow();
+  tabForm.init();
 });
