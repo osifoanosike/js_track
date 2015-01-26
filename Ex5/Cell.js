@@ -31,7 +31,6 @@ Cell.prototype.createButton = function(text, buttonId) {
   var button = document.createElement('button');
   button.className = 'submit';
   button.id = buttonId;
-  button.onclick = row.submitRow;
   var text = document.createTextNode(text);
   button.appendChild(text);
   return button;
@@ -59,8 +58,17 @@ Cell.prototype.validateInputs = function(name, email) {
   } else {
     alert('Make sure there are no empty fields.');
   }
-
   return feedback;
 }
 
-var cell = new Cell();
+Cell.prototype.removeChildNodes = function(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+Cell.prototype.append = function(parent, children) {
+  for (var i = 1; i < arguments.length; i++) {
+    parent.appendChild(arguments[i]);
+  }
+}
