@@ -3,16 +3,16 @@ function Row() {
   this.cell;
 }
 
-var ROW_COUNT = 0;
+Row.count = 0;
 
 Row.prototype.add = function() {
 
   that = this;
 
-  ROW_COUNT++;
+  Row.count++;
   this.cell = new Cell();
 
-  var rowNumber = ROW_COUNT.toString();
+  var rowNumber = Row.count.toString();
 
   var tdName = this.cell.createTableData(rowNumber);
   var tdEmail = this.cell.createTableData(rowNumber);
@@ -52,7 +52,7 @@ Row.prototype.submit = function() {
     var deleteLink = that.cell.createLink('Delete', id);
 
     editLink.onclick = that.edit;
-    deleteLink.onclick = that.deleteRow;
+    deleteLink.onclick = that.delete;
 
     that.cell.replaceField(inputs, inputTexts);
     that.cell.removeChildNodes(tdAction);
