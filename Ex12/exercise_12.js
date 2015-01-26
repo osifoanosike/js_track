@@ -3,23 +3,24 @@ function Domain() {
   this.regex = /^(?:(?:https?:\/\/www\.|https?:\/\/|ftp:\/\/www\.|ftp:\/\/|www\.))?([a-z0-9]+(?:(?:\.|-)?[a-z0-9]+)+(?:\.[a-z]{2,6}))(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(\.[a-z]+)*/i;
 }
 
-Domain.prototype.extractDomain = function() {
-
+Domain.prototype.init = function() {
+  
   that = this;
-
   var button = document.getElementById('submit');
 
   button.addEventListener('click', function() {
-
-    var url = document.getElementById('url');
-    var urlValue = url.value;
-
-    address = urlValue.replace(that.regex, '$1');
-
-    that.displayDomain(address);
-
+    that.extractDomain();
   });
+}
 
+Domain.prototype.extractDomain = function() {
+
+  var url = document.getElementById('url');
+  var urlValue = url.value;
+
+  var address = urlValue.replace(that.regex, '$1');
+
+  that.displayDomain(address);
 }
 
 Domain.prototype.displayDomain = function(webAddress) {
@@ -50,5 +51,5 @@ Domain.prototype.displayDomain = function(webAddress) {
 
 window.addEventListener('load', function() {
   var domain = new Domain();
-  domain.extractDomain();
+  domain.init();
 });
