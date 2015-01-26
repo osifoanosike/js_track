@@ -1,7 +1,6 @@
 
 function Domain() {
-  this.regex1 = /^(https?:\/\/www\.|https?:\/\/|ftp:\/\/www\.|ftp:\/\/|www\.)/i;
-  this.regex2 = /(?:[a-z0-9.-]+)(?=(?:\/)?)/i;
+  this.regex = /^(?:(?:https?:\/\/www\.|https?:\/\/|ftp:\/\/www\.|ftp:\/\/|www\.))?([a-z0-9]+(?:(?:\.|-)?[a-z0-9]+)+(?:\.[a-z]{2,6}))(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(\.[a-z]+)*/i;
 }
 
 Domain.prototype.extractDomain = function() {
@@ -11,14 +10,11 @@ Domain.prototype.extractDomain = function() {
   var button = document.getElementById('submit');
 
   button.addEventListener('click', function() {
-    
-    // var form = document.getElementById(formName);
+
     var url = document.getElementById('url');
     var urlValue = url.value;
 
-    var extract = urlValue.replace(that.regex1, '');
-
-    var address = extract.match(that.regex2)[0];
+    address = urlValue.replace(that.regex, '$1');
 
     that.displayDomain(address);
 
