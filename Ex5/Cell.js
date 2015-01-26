@@ -1,4 +1,3 @@
-
 function Cell() {
 }
 
@@ -46,9 +45,7 @@ Cell.prototype.getValues = function(inputs) {
 }
 
 Cell.prototype.validateInputs = function(name, email) {
-
 	var feedback = false;
-
 	if (!validator.empty(name) && !validator.empty(email)) {
     if (!validator.validateEmail(email)) {
       alert("Please enter a valid e-mail address");
