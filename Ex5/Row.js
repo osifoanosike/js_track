@@ -1,8 +1,37 @@
 
 function Row() {
+  this.cell;
 }
 
-Row.prototype.submitRow = function() {
+var ROW_COUNT = 0;
+
+Row.prototype.add = function() {
+
+  that = this;
+
+  ROW_COUNT++;
+  this.cell = new Cell();
+
+  var rowNumber = ROW_COUNT.toString();
+
+  var tdName = this.cell.createTableData(rowNumber);
+  var tdEmail = this.cell.createTableData(rowNumber);
+
+  var tdAction = document.createElement('td');
+
+  var button = this.cell.createButton('Submit', rowNumber);
+  button.onclick = this.submit;
+
+  tdAction.appendChild(button);
+
+  var tr = document.createElement('tr');
+  this.cell.append(tr, tdName, tdEmail, tdAction);
+
+  var tbody = document.getElementById('tbody');
+  tbody.appendChild(tr); 
+}
+
+Row.prototype.submit = function() {
 
   var id = this.id;
 
@@ -11,27 +40,27 @@ Row.prototype.submitRow = function() {
   var name = inputs[0].firstChild.value;
   var email = inputs[1].firstChild.value;
 
-  var inputTexts = cell.getValues(inputs);
+  var inputTexts = that.cell.getValues(inputs);
 
   var separator = document.createTextNode(' / ');
 
   var tdAction = inputs[1].nextSibling;
 
-  if (cell.validateInputs(name, email)) {
+  if (that.cell.validateInputs(name, email)) {
 
-    var editLink = cell.createLink('Edit', id);
-    var deleteLink = cell.createLink('Delete', id);
+    var editLink = that.cell.createLink('Edit', id);
+    var deleteLink = that.cell.createLink('Delete', id);
 
-    editLink.onclick = row.editRow;
-    deleteLink.onclick = row.deleteRow;
+    editLink.onclick = that.edit;
+    deleteLink.onclick = that.deleteRow;
 
-    cell.replaceField(inputs, inputTexts);
-    tdAction.replaceChild(editLink, inputs[1].nextSibling.firstChild);
-    that.append(tdAction, separator, deleteLink);
+    that.cell.replaceField(inputs, inputTexts);
+    that.cell.removeChildNodes(tdAction);
+    that.cell.append(tdAction, editLink, separator, deleteLink);
   }
 }
 
-Row.prototype.editRow = function() {
+Row.prototype.edit = function() {
 
   var id = this.id;
 
@@ -46,19 +75,16 @@ Row.prototype.editRow = function() {
   }
 
   var tdAction = tdValues[1].nextSibling;
+  var button = that.cell.createButton('Submit', id);
+  button.onclick = that.submit;
 
-  var button = cell.createButton('Submit', id);
-
-  tdAction.replaceChild(button, tdAction.firstChild);
-  tdAction.replaceChild(button, tdAction.childNodes[1])
-  tdAction.replaceChild(button, tdAction.lastChild);
+  that.cell.removeChildNodes(tdAction);
+  that.cell.append(tdAction, button);
 }
 
-Row.prototype.deleteRow = function() {
+Row.prototype.delete = function() {
   var id = this.id;
   var parent = document.getElementById('tbody');
   var child = document.getElementsByClassName(id)[0].parentNode;
   parent.removeChild(child);
 }
-
-var row = new Row();
