@@ -9,7 +9,7 @@ Table.prototype.init = function() {
   var addButton = document.getElementById('add');
   addButton.addEventListener('click', function() {
     that.row = new Row();
-    that.row.addRow();
+    that.row.add();
   });
 }
 
