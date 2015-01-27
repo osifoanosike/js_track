@@ -1,4 +1,5 @@
 function Cell() {
+  this.row;
 }
 
 Cell.prototype.replaceField = function(inputField, inputText) {
