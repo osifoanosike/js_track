@@ -1,5 +1,5 @@
 function Row() {
-  this.cell;
+  this.table;
 }
 
 Row.count = 0;
