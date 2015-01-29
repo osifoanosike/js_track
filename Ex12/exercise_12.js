@@ -1,43 +1,34 @@
 function Domain() {
-  this.regex = /^(?:(?:https?|ftp):\/\/(?:www\.)?|www\.)?(([a-z0-9]+(?:(?:\.|-)?[a-z0-9]+)+)(?:\.[a-z]{2,6}))(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(\.[a-z]+)*$/i;
+  this.regex = /^(?:(?:https?|ftp):\/\/(?:www\.)?|www\.)?(([a-z0-9]+)((\.?[a-z0-9]+)*\.[a-z]{2,6}))(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(\.[a-z]+)*$/i;
 }
 
-Domain.prototype.init = function() {  
-  that = this;
+Domain.prototype.init = function() {
+  var that = this;
   var button = document.getElementById('submit');
   button.addEventListener('click', function() {
     that.extractDomain();
   });
 }
 
-Domain.prototype.extractDomain = function() {
-  var url = document.getElementById('url');
-  var urlValue = url.value;
-  var address = urlValue.replace(that.regex, '$1');
-  this.displayDomain(address);
+Domain.prototype.extractHostname = function() {
+  var input = document.getElementById('url');
+  var url = input.value;
+  var hostname = url.replace(this.regex, '$1');
+  this.displayDomain(hostname);
 }
 
-Domain.prototype.displayDomain = function(webAddress) {
-  var webArray = webAddress.split('.');
-
-  if (webAddress.match(/co(?=\.)/)) {
-    if (webArray.length == 3) {
-      alert('Domain: ' + webAddress);
-    } else {
-      alert('Domain: ' + webArray[1] + '.' + webArray[2] + '.' + webArray[3] + '\n\n'
-            + 'Subdomain: ' + webArray[0]
-      );
-    }
-
+Domain.prototype.displayDomain = function(hostname) {
+  var message;
+  if (hostname.split('.').length == 2) {
+    message = 'Domain: ' + hostname;
   } else {
-    if (webArray.length == 2) {
-      alert('Domain: ' + webAddress);
-    } else {
-      alert('Domain: ' + webArray[1] + '.' + webArray[2] + '\n\n'
-            + 'Subdomain: ' + webArray[0]
-      );
-    }
+    var subdomain = hostname.replace(this.regex, '$2');
+    var domain = hostname.replace(this.regex, '$3').substr(1);
+    message = 'Domain: ' + domain
+              + '\n\n'
+              + 'Subdomain: ' + subdomain;
   }
+  alert(message);
 }
 
 window.addEventListener('load', function() {
