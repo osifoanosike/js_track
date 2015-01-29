@@ -1,5 +1,5 @@
 function Domain() {
-  this.regex = /^(?:(?:https?:\/\/www\.|https?:\/\/|ftp:\/\/www\.|ftp:\/\/|www\.))?([a-z0-9]+(?:(?:\.|-)?[a-z0-9]+)+(?:\.[a-z]{2,6}))(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(\.[a-z]+)*/i;
+  this.regex = /^(?:https?:\/\/www\.|https?:\/\/|ftp:\/\/www\.|ftp:\/\/|www\.)?(([a-z0-9]+(?:(?:\.|-)?[a-z0-9]+)+)(?:\.[a-z]{2,6}))(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(\.[a-z]+)*$/i;
 }
 
 Domain.prototype.init = function() {  
