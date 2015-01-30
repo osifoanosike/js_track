@@ -25,7 +25,7 @@ Validate.prototype.validateUrl = function(url) {
   // ^((?:https?|ftp):\/\/)[a-z0-9.-]+\/[a-z0-9.]+
   // ^((?:https?|ftp):\/\/)[a-z0-9.-]+\/?([a-z0-9.]+\/?)+
 
-  var urlRegExp = /^(?:https?:\/\/|ftp:\/\/|www\.)?[a-z0-9]+(?:(?:\.|-)?[a-z0-9]+)*(?:\.[a-z]{2,6})(?:(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*$)/;
+  var urlRegExp = /^(?:(?:https?|ftp):\/\/)?[a-z\d]+(?:(?:\.|-)?[a-z\d]+)*(?:\.[a-z]{2,6})(?:\/?(?!\/)(?:[a-z\d]+(?:(?:-|_)[a-z\d]+)*)*)*$/i;
   if (urlRegExp.test(url)) {
     return true;
   }
