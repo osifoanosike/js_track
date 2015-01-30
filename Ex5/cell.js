@@ -2,10 +2,10 @@ function Cell() {
   this.row;
 }
 
-Cell.prototype.replaceField = function(inputField, inputText) {
-  var count = inputField.length;
+Cell.prototype.replaceInputField = function(inputCell, inputText) {
+  var count = inputCell.length;
   for (var i = 0; i < count; i++) {
-    inputField[i].replaceChild(inputText[i], inputField[i].firstChild);
+    inputCell[i].replaceChild(inputText[i], inputCell[i].firstChild);
   }
 }
 
@@ -18,13 +18,13 @@ Cell.prototype.createLink = function(text, linkId) {
   return link;
 }
 
-Cell.prototype.createTableData = function(rowNumber) {
-  var td = document.createElement('td');
+Cell.prototype.createCell = function(rowNumber) {
+  var cell = document.createElement('td');
   var input = document.createElement('input');
   input.type = 'text';
-  td.className = rowNumber;
-  td.appendChild(input);
-  return td;
+  cell.className = rowNumber;
+  cell.appendChild(input);
+  return cell;
 }
 
 Cell.prototype.createButton = function(text, buttonId) {
@@ -36,27 +36,27 @@ Cell.prototype.createButton = function(text, buttonId) {
   return button;
 }
 
-Cell.prototype.getValues = function(inputs) {
-  var text = [];
-  for (var i = 0; i < inputs.length; i++) {
-    var value = inputs[i].firstChild.value;
-    text[i] = document.createTextNode(value);
+Cell.prototype.getInputValues = function(inputCells) {
+  var values = [];
+  for (var i = 0; i < inputCells.length; i++) {
+    var value = inputCells[i].firstChild.value;
+    values[i] = document.createTextNode(value);
   }
-  return text;
+  return values;
 }
 
 Cell.prototype.validateInputs = function(name, email) {
-	var feedback = false;
+	var valid = false;
 	if (!validator.empty(name) && !validator.empty(email)) {
     if (!validator.validateEmail(email)) {
-      alert("Please enter a valid e-mail address");
+      alert("Please enter a valid e-mail address.");
     } else {
-    	feedback = true;
+    	valid = true;
     }
   } else {
     alert('Make sure there are no empty fields.');
   }
-  return feedback;
+  return valid;
 }
 
 Cell.prototype.removeChildNodes = function(parent) {
