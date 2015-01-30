@@ -1,4 +1,3 @@
-
 function User(name, age) {
   this.name = name;
   this.age = Number(age);
@@ -15,7 +14,6 @@ User.prototype.compare = function (user) {
     //This is the result if both users are of the same age.
     result = this.name + " and " + user.name + " are age mates.";
   }
-
   return result;
 }
 
