@@ -1,26 +1,20 @@
-
 function NumberCheck() {
   this.number;
   this.result;
 }
 
 NumberCheck.prototype.checkNumber = function(formId) {
-
   var that = this;
-
   var form = document.getElementById(formId);
   
   form.addEventListener('submit', function() {
-
     var input = document.getElementById('number');
     that.number = input.value.trim();
-
     that.validateInput(that.number);
   });
 }
 
 NumberCheck.prototype.validateInput = function() {
-
   if (this.isEmpty(this.number)) {
     event.preventDefault();
   } else {
@@ -36,7 +30,6 @@ NumberCheck.prototype.isEmpty = function() {
 }
 
 NumberCheck.prototype.isNumber = function() {
-
   this.result = document.getElementById('result');
   if (REGEX.numeral.test(this.number)) {
     this.result.value = 'True';
