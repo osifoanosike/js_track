@@ -1,4 +1,3 @@
-
 function ToggleCheck(className) {
   this.className = className;
 }
