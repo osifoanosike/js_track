@@ -35,10 +35,11 @@ CheckLimit.prototype.uncheck = function() {
 }
 
 CheckLimit.prototype.composeMessage = function(checkedBoxes) {
-  var message = 'Only ' + checkedBoxes.length + ' days can be selected. You have already selected ';
-  for (var i = 0; i < checkedBoxes.length; i++) {
-    if (i !== checkedBoxes.length - 1) {
-      message += checkedBoxes[i].value + ', '
+  var numberOfCheckedBoxes = checkedBoxes.length;
+  var message = 'Only ' + numberOfCheckedBoxes + ' days can be selected. You have already selected ';
+  for (var i = 0; i < numberOfCheckedBoxes; i++) {
+    if (i !== numberOfCheckedBoxes - 1) {
+      message += checkedBoxes[i].value + ', ';
     } else {
       message += 'and ' + checkedBoxes[i].value + '.';
     }
