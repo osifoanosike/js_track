@@ -63,9 +63,9 @@ Cell.prototype.validateInputs = function(name, email) {
 }
 
 Cell.prototype.removeChildNodes = function(parent) {
-  while (parent.firstChild) {
+  do {
     parent.removeChild(parent.firstChild);
-  }
+  } while (parent.firstChild);
 }
 
 Cell.prototype.append = function(parent, children) {
