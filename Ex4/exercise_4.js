@@ -2,13 +2,14 @@ function ChildrenCheck() {
 }
 
 ChildrenCheck.prototype.check = function(className) {
+  var doc = document;
   var parentSelector = '.' + className;
   var childrenContainer = 'div.' + className;
   var childrenSelector = 'div.' + className + ' input';
 
-  var parentCheckbox = document.querySelector(parentSelector);
-  var siblingDiv = document.querySelector(childrenContainer);
-  var childCheckboxes = document.querySelectorAll(childrenSelector);
+  var parentCheckbox = doc.querySelector(parentSelector);
+  var siblingDiv = doc.querySelector(childrenContainer);
+  var childCheckboxes = doc.querySelectorAll(childrenSelector);
 
   if (parentCheckbox.checked) {
     siblingDiv.style.display = 'block';
