@@ -69,7 +69,9 @@ Cell.prototype.removeChildNodes = function(parent) {
 }
 
 Cell.prototype.append = function(parent, children) {
+  var fragment = document.createDocumentFragment();
   for (var i = 1; i < arguments.length; i++) {
-    parent.appendChild(arguments[i]);
+    fragment.appendChild(arguments[i]);
   }
+  parent.appendChild(fragment);
 }
