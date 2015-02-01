@@ -10,8 +10,9 @@ Cell.prototype.replaceInputField = function(inputCell, inputText) {
 }
 
 Cell.prototype.createLink = function(text, linkId) {
-  var link = document.createElement('a');
-  var text = document.createTextNode(text);
+  var doc = document;
+  var link = doc.createElement('a');
+  var text = doc.createTextNode(text);
   link.id = linkId;
   link.appendChild(text);
   link.href = '#';
@@ -19,8 +20,9 @@ Cell.prototype.createLink = function(text, linkId) {
 }
 
 Cell.prototype.createCell = function(rowNumber) {
-  var cell = document.createElement('td');
-  var input = document.createElement('input');
+  var doc = document;
+  var cell = doc.createElement('td');
+  var input = doc.createElement('input');
   input.type = 'text';
   cell.className = rowNumber;
   cell.appendChild(input);
@@ -28,10 +30,11 @@ Cell.prototype.createCell = function(rowNumber) {
 }
 
 Cell.prototype.createButton = function(text, buttonId) {
-  var button = document.createElement('button');
+  var doc = document;
+  var button = doc.createElement('button');
   button.className = 'submit';
   button.id = buttonId;
-  var text = document.createTextNode(text);
+  var text = doc.createTextNode(text);
   button.appendChild(text);
   return button;
 }

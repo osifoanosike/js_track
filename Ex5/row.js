@@ -6,30 +6,32 @@ Row.count = 0;
 
 Row.prototype.add = function() {
   that = this;
+  var doc = document;
   Row.count++;
   var rowNumber = Row.count.toString();
   
   this.cell = new Cell();
   var nameCell = this.cell.createCell(rowNumber);
   var emailCell = this.cell.createCell(rowNumber);
-  var actionCell = document.createElement('td');
+  var actionCell = doc.createElement('td');
 
   var button = this.cell.createButton('Submit', rowNumber);
   button.onclick = this.submit;
   actionCell.appendChild(button);
-  var row = document.createElement('tr');
+  var row = doc.createElement('tr');
   this.cell.append(row, nameCell, emailCell, actionCell);
-  var table = document.getElementById('tbody');
+  var table = doc.getElementById('tbody');
   table.appendChild(row); 
 }
 
 Row.prototype.submit = function() {
   var id = this.id;
-  var inputCells = document.getElementsByClassName(id);
+  var doc = document;
+  var inputCells = doc.getElementsByClassName(id);
   var name = inputCells[0].firstChild.value;
   var email = inputCells[1].firstChild.value;
   var inputValues = that.cell.getInputValues(inputCells);
-  var separator = document.createTextNode(' / ');
+  var separator = doc.createTextNode(' / ');
   var actionCell = inputCells[1].nextSibling;
 
   if (that.cell.validateInputs(name, email)) {
@@ -45,10 +47,11 @@ Row.prototype.submit = function() {
 
 Row.prototype.edit = function() {
   var id = this.id;
-  var inputCells = document.getElementsByClassName(id);
+  var doc = document;
+  var inputCells = doc.getElementsByClassName(id);
   for (var i = 0; i < inputCells.length; i++) {
     var inputValue = inputCells[i].innerHTML;
-    var input = document.createElement('input');
+    var input = doc.createElement('input');
     input.value = inputValue;
     input.type = 'text';
     inputCells[i].replaceChild(input, inputCells[i].firstChild);
@@ -63,7 +66,8 @@ Row.prototype.edit = function() {
 
 Row.prototype.delete = function() {
   var id = this.id;
-  var table = document.getElementById('tbody');
-  var row = document.getElementsByClassName(id)[0].parentNode;
+  var doc = document;
+  var table = doc.getElementById('tbody');
+  var row = doc.getElementsByClassName(id)[0].parentNode;
   table.removeChild(row);
 }
