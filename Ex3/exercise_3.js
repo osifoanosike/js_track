@@ -5,16 +5,17 @@ function CheckLimit(className, limit) {
 }
 
 CheckLimit.prototype.check = function(id) {
-  var none = document.getElementById('none');
+  var doc = document;
+  var none = doc.getElementById('none');
   none.checked = false;
-  var checkbox = document.getElementById(id);
+  var checkbox = doc.getElementById(id);
 
   if (checkbox.checked) {
     if (this.count < this.limit) {
       this.count++;
     } else {
       checkbox.checked = false;
-      var checkedBoxes = document.querySelectorAll(this.className+':checked');
+      var checkedBoxes = doc.querySelectorAll(this.className+':checked');
       this.composeMessage(checkedBoxes);
     }
   } else {
@@ -23,8 +24,9 @@ CheckLimit.prototype.check = function(id) {
 }
 
 CheckLimit.prototype.uncheck = function() {
-  var none = document.getElementById('none');
-  var checkedBoxes = document.querySelectorAll(this.className+':checked');
+  var doc = document;
+  var none = doc.getElementById('none');
+  var checkedBoxes = doc.querySelectorAll(this.className+':checked');
   var len = checkedBoxes.length;
   for (i = 0; i < len; i++) {
     checkedBoxes[i].checked = false;
