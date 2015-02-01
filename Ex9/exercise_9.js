@@ -8,9 +8,10 @@ MoveCountry.prototype.move = function(sourceBoxId, destinationBoxId) {
   var fragment = doc.createDocumentFragment();
 
   var selectedCountries = sourceList.selectedOptions;
-  for (var i = 0; i < selectedCountries.length; i++) {
-    fragment.appendChild(selectedCountries[i]);
-    i--;
+  var numberOfSelectedCountries = selectedCountries.length; 
+  for (var i = 0; i < numberOfSelectedCountries; i++) {
+    fragment.appendChild(selectedCountries[i--]);
+    numberOfSelectedCountries--
   }
   destinationList.appendChild(fragment);
 }
