@@ -1,4 +1,5 @@
 function Table() {
+  this.rowCount = 0;
 }
 
 Table.prototype.init = function() { 
