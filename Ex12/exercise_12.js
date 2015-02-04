@@ -6,7 +6,7 @@ Domain.prototype.init = function() {
   var that = this;
   var button = document.getElementById('submit');
   button.addEventListener('click', function() {
-    that.extractDomain();
+    that.extractHostname();
   });
 }
 
