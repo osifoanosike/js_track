@@ -1,5 +1,5 @@
 function Domain() {
-  this.regex = /^(?:(?:https?|ftp):\/\/(?:www\.)?|www\.)?(?:([a-z0-9]+(?:\.[a-z0-9]+)*)\.)*([a-z0-9]+\.[a-z]+)(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(?:\.[a-z]+)*$/i;
+  this.regex = /^(?:(?:https?|ftp):\/\/(?:www\.)?|www\.)?((?:([a-z0-9]+(?:\.[a-z0-9]+)*)\.)*([a-z0-9]+\.[a-z]+))(?:\/?(?!\/)(?:[a-z0-9]+(?:(?:-|_)[a-z0-9]+)*)*)*(?:\.[a-z]+)*$/i;
 }
 
 Domain.prototype.init = function() {
@@ -22,8 +22,8 @@ Domain.prototype.displayDomain = function(hostname) {
   if (hostname.split('.').length == 2) {
     message = 'Domain: ' + hostname;
   } else {
+    var domain = hostname.replace(this.regex, '$3');
     var subdomain = hostname.replace(this.regex, '$2');
-    var domain = hostname.replace(this.regex, '$1').substr(1);
     message = 'Domain: ' + domain
               + '\n\n'
               + 'Subdomain: ' + subdomain;
