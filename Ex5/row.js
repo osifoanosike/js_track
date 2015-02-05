@@ -32,11 +32,13 @@ Row.prototype.submit = function() {
   var actionCell = row.lastChild;
 
   if (cell.validateInputs(name, email)) {
+    var newActionCell = doc.createElement('td');
     var editLink = cell.createLink('Edit', cell.row.edit);
     var deleteLink = cell.createLink('Delete', cell.row.delete);
+
     cell.replaceInputField(inputCells, inputValues);
-    cell.removeChildNodes(actionCell);
-    cell.append(actionCell, editLink, separator, deleteLink);
+    cell.append(newActionCell, editLink, separator, deleteLink);
+    row.replaceChild(newActionCell, actionCell);
   }
 }
 
@@ -54,9 +56,10 @@ Row.prototype.edit = function() {
   }
 
   var actionCell = row.lastChild;
+  var newActionCell = doc.createElement('td');
   var button = cell.createButton('Submit');
-  cell.removeChildNodes(actionCell);
-  cell.append(actionCell, button);
+  cell.append(newActionCell, button);
+  row.replaceChild(newActionCell, actionCell);
 }
 
 Row.prototype.delete = function() {
@@ -119,11 +122,6 @@ cell = {
       alert('Make sure there are no empty fields.');
     }
     return valid;
-  },
-  removeChildNodes: function(parent) {
-    do {
-      parent.removeChild(parent.firstChild);
-    } while (parent.firstChild);
   },
   append: function(parent, children) {
     var fragment = document.createDocumentFragment();
