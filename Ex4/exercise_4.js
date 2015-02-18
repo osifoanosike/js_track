@@ -1,17 +1,26 @@
 function ChildrenCheck() {
 }
 
-ChildrenCheck.prototype.check = function(className) {
-  var doc               = document;
-  var parentSelector    = '.' + className;
-  var childrenContainer = 'div.' + className;
-  var childrenSelector  = 'div.' + className + ' input';
+ChildrenCheck.prototype.init = function() {
+  var that = this;
+  var main = document.getElementById('main');
+  main.addEventListener('click', function(event) {
+    var parent = event.target;
+    if (parent.className = 'parent') {
+      that.check(parent);
+    }
+  });
+}
 
-  var parentCheckbox  = doc.querySelector(parentSelector);
-  var siblingDiv      = doc.querySelector(childrenContainer);
-  var childCheckboxes = doc.querySelectorAll(childrenSelector);
+ChildrenCheck.prototype.check = function(parent) {
+  var doc                        = document;
+  var childrenContainerClassName = parent.id;
+  var childrenContainer          = 'div.' + childrenContainerClassName;
+  var childrenSelector           = 'div.' + childrenContainerClassName + ' input';
+  var siblingDiv                 = doc.querySelector(childrenContainer);
+  var childCheckboxes            = doc.querySelectorAll(childrenSelector);
 
-  if (parentCheckbox.checked) {
+  if (parent.checked) {
     siblingDiv.style.display = 'block';
     this.markCheckBoxes(childCheckboxes, true);
     siblingDiv.scrollIntoView(true);
@@ -28,4 +37,7 @@ ChildrenCheck.prototype.markCheckBoxes = function(checkBoxes, checkStatus) {
   }
 }
 
-var checkChild = new ChildrenCheck();
+window.addEventListener('load', function() {
+  var checkChild = new ChildrenCheck();
+  checkChild.init();
+})
