@@ -1,12 +1,12 @@
 function CheckLimit(className, limit) {
   this.className = className;
-  this.limit  = limit;
-  this.count = 0;
+  this.limit     = limit;
+  this.count     = 0;
 }
 
 CheckLimit.prototype.check = function(id) {
-  var doc = document;
-  var none = doc.getElementById('none');
+  var doc      = document;
+  var none     = doc.getElementById('none');
   none.checked = false;
   var checkbox = doc.getElementById(id);
 
@@ -24,10 +24,10 @@ CheckLimit.prototype.check = function(id) {
 }
 
 CheckLimit.prototype.uncheck = function() {
-  var doc = document;
-  var none = doc.getElementById('none');
+  var doc          = document;
+  var none         = doc.getElementById('none');
   var checkedBoxes = doc.querySelectorAll(this.className+':checked');
-  var len = checkedBoxes.length;
+  var len          = checkedBoxes.length;
   for (i = 0; i < len; i++) {
     checkedBoxes[i].checked = false;
   }
@@ -36,7 +36,7 @@ CheckLimit.prototype.uncheck = function() {
 
 CheckLimit.prototype.composeMessage = function(checkedBoxes) {
   var numberOfCheckedBoxes = checkedBoxes.length;
-  var message = 'Only ' + numberOfCheckedBoxes + ' days can be selected. You have already selected ';
+  var message              = 'Only ' + numberOfCheckedBoxes + ' days can be selected. You have already selected ';
   for (var i = 0; i < numberOfCheckedBoxes; i++) {
     if (i !== numberOfCheckedBoxes - 1) {
       message += checkedBoxes[i].value + ', ';
