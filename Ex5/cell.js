@@ -10,31 +10,31 @@ Cell.prototype.replaceInputField = function(inputCell, inputText) {
 }
 
 Cell.prototype.createLink = function(text, linkId) {
-  var doc = document;
-  var link = doc.createElement('a');
-  var text = doc.createTextNode(text);
-  link.id = linkId;
-  link.appendChild(text);
+  var doc   = document;
+  var link  = doc.createElement('a');
+  var text  = doc.createTextNode(text);
+  link.id   = linkId;
   link.href = '#';
+  link.appendChild(text);
   return link;
 }
 
 Cell.prototype.createCell = function(rowNumber) {
-  var doc = document;
-  var cell = doc.createElement('td');
-  var input = doc.createElement('input');
-  input.type = 'text';
+  var doc        = document;
+  var cell       = doc.createElement('td');
+  var input      = doc.createElement('input');
+  input.type     = 'text';
   cell.className = rowNumber;
   cell.appendChild(input);
   return cell;
 }
 
 Cell.prototype.createButton = function(text, buttonId) {
-  var doc = document;
-  var button = doc.createElement('button');
+  var doc          = document;
+  var button       = doc.createElement('button');
   button.className = 'submit';
-  button.id = buttonId;
-  var text = doc.createTextNode(text);
+  button.id        = buttonId;
+  var text         = doc.createTextNode(text);
   button.appendChild(text);
   return button;
 }

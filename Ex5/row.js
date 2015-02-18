@@ -3,17 +3,17 @@ function Row() {
 }
 
 Row.prototype.add = function() {
-  var doc = document;
   this.table.rowCount++;
-  var rowNumber = this.table.rowCount.toString();
-  var nameCell = cell.createCell(rowNumber);
-  var emailCell = cell.createCell(rowNumber);
+  var doc        = document;
+  var rowNumber  = this.table.rowCount.toString();
+  var nameCell   = cell.createCell(rowNumber);
+  var emailCell  = cell.createCell(rowNumber);
   var actionCell = doc.createElement('td');
 
   var button = cell.createButton('Submit');
   actionCell.appendChild(button);
   var row = doc.createElement('tr');
-  row.id = rowNumber;
+  row.id  = rowNumber;
   cell.append(row, nameCell, emailCell, actionCell);
 
   var table = doc.getElementById('tbody');
@@ -21,20 +21,20 @@ Row.prototype.add = function() {
 }
 
 Row.prototype.submit = function() {
-  var doc = document;
-  var row = this.parentNode.parentNode;
-  var rowNumber = row.id;
-  var inputCells = doc.getElementsByClassName(rowNumber);
-  var name = inputCells[0].firstChild.value;
-  var email = inputCells[1].firstChild.value;
+  var doc         = document;
+  var row         = this.parentNode.parentNode;
+  var rowNumber   = row.id;
+  var inputCells  = doc.getElementsByClassName(rowNumber);
+  var name        = inputCells[0].firstChild.value;
+  var email       = inputCells[1].firstChild.value;
   var inputValues = cell.getInputValues(inputCells);
-  var separator = doc.createTextNode(' / ');
-  var actionCell = row.lastChild;
+  var separator   = doc.createTextNode(' / ');
+  var actionCell  = row.lastChild;
 
   if (cell.validateInputs(name, email)) {
     var newActionCell = doc.createElement('td');
-    var editLink = cell.createLink('Edit', cell.row.edit);
-    var deleteLink = cell.createLink('Delete', cell.row.delete);
+    var editLink      = cell.createLink('Edit', cell.row.edit);
+    var deleteLink    = cell.createLink('Delete', cell.row.delete);
 
     cell.replaceInputField(inputCells, inputValues);
     cell.append(newActionCell, editLink, separator, deleteLink);
@@ -43,27 +43,27 @@ Row.prototype.submit = function() {
 }
 
 Row.prototype.edit = function() {
-  var doc = document;
-  var row = this.parentNode.parentNode;
-  var rowNumber = row.id;
+  var doc        = document;
+  var row        = this.parentNode.parentNode;
+  var rowNumber  = row.id;
   var inputCells = doc.getElementsByClassName(rowNumber);
   for (var i = 0; i < inputCells.length; i++) {
     var inputValue = inputCells[i].innerHTML;
-    var input = doc.createElement('input');
-    input.value = inputValue;
-    input.type = 'text';
+    var input      = doc.createElement('input');
+    input.value    = inputValue;
+    input.type     = 'text';
     inputCells[i].replaceChild(input, inputCells[i].firstChild);
   }
 
-  var actionCell = row.lastChild;
+  var actionCell    = row.lastChild;
   var newActionCell = doc.createElement('td');
-  var button = cell.createButton('Submit');
+  var button        = cell.createButton('Submit');
   cell.append(newActionCell, button);
   row.replaceChild(newActionCell, actionCell);
 }
 
 Row.prototype.delete = function() {
-  var row = this.parentNode.parentNode;
+  var row   = this.parentNode.parentNode;
   var table = document.getElementById('tbody');
   table.removeChild(row);
 }
@@ -77,28 +77,28 @@ cell = {
     }
   },
   createLink: function(text, handler) {
-    var doc = document;
-    var link = doc.createElement('a');
+    var doc      = document;
+    var link     = doc.createElement('a');
     var textNode = doc.createTextNode(text);
     link.appendChild(textNode);
-    link.href = '#';
+    link.href    = '#';
     link.onclick = handler;
     return link;
   },
   createCell: function(rowNumber) {
-    var doc = document;
-    var cell = doc.createElement('td');
-    var input = doc.createElement('input');
-    input.type = 'text';
+    var doc        = document;
+    var cell       = doc.createElement('td');
+    var input      = doc.createElement('input');
+    input.type     = 'text';
     cell.className = rowNumber;
     cell.appendChild(input);
     return cell;
   },
   createButton: function(text) {
-    var doc = document;
-    var button = doc.createElement('button');
+    var doc        = document;
+    var button     = doc.createElement('button');
     button.onclick = this.row.submit;
-    var text = doc.createTextNode(text);
+    var text       = doc.createTextNode(text);
     button.appendChild(text);
     return button;
   },

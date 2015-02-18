@@ -3,7 +3,7 @@ function Table() {
 }
 
 Table.prototype.init = function() { 
-  var that = this;
+  var that      = this;
   var addButton = document.getElementById('add');
   addButton.addEventListener('click', function() {
     that.makeRow();
@@ -11,7 +11,7 @@ Table.prototype.init = function() {
 }
 
 Table.prototype.makeRow = function() {
-  var row = new Row();
+  var row   = new Row();
   row.table = this;
   row.add();
 }
