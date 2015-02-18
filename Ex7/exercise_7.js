@@ -11,11 +11,14 @@ Account.prototype.getName = function() {
   } while (validator.empty(firstName))
   do {
     var lastName = prompt('What is your last name');
-  } while (validator.empty(lastName))
+  } while (validator.empty(lastName));
+  this.displayName(firstName, lastName);
+}
 
-  var message = 'Hello ' + firstName + ' ' + lastName + '.';
-  alert(message);
-  document.write('<strong>' + message + '</strong>');
+Account.prototype.displayName = function(firstName, lastName) {
+  var name = 'Hello ' + firstName + ' ' + lastName + '.';
+  alert(name);
+  document.write('<strong>' + name + '</strong>');
 }
 
 window.addEventListener('load', function() {
