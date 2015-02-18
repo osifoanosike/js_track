@@ -8,7 +8,7 @@
 
 <body>
   <h4>Countries &mdash; First Box</h4>
-  <select id="add" multiple size="12">
+  <select id="box1" multiple size="12">
     <option value="nigeria">Nigeria</option>
     <option value="ghana">Ghana</option>
     <option value="benin">Benin</option>
@@ -22,10 +22,10 @@
     <option value="gabon">Gabon</option>
     <option value="kenya">Kenya</option>
   </select>
-  <button onclick="moveCountry.move('add', 'remove')">Add</button>
+  <button id="add">Add</button>
 
   <h4>Selected Countries &mdash; Second Box</h4>
-  <select id="remove" multiple size="12"></select>
-  <button onclick="moveCountry.move('remove', 'add')">Remove</button>
+  <select id="box2" multiple size="12"></select>
+  <button id="remove">Remove</button>
 </body>
 </html>
