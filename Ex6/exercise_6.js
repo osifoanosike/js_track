@@ -15,7 +15,7 @@ Validation.prototype.checkValue = function(form) {
   for (var i = 0; i < details.length; i++) {
     if (validator.empty(details[i].value)) {
       var labelText = details[i].previousElementSibling.textContent;
-      message = labelText + ' cannot be empty.';
+      message       = labelText + ' cannot be empty.';
       alert(message);
     }
   }
