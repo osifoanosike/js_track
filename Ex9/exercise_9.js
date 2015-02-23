@@ -8,10 +8,10 @@ MoveCountry.prototype.init = function() {
   var removeButton = doc.getElementById('remove');
 
   addButton.addEventListener('click', function() {
-    that.move('box1', 'box2');
+    that.move('list1', 'list2');
   });
   removeButton.addEventListener('click', function() {
-    that.move('box2', 'box1');
+    that.move('list2', 'list1');
   });
 }
 
